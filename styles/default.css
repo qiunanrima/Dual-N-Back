@@ -1,117 +1,202 @@
 /*
     Copyright 2017 Jonathan Perry-Houts
-
     This file is part of 'Dual-N-Back Game'.
-
     'Dual-N-Back Game' is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
-
     'Dual-N-Back Game' is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
-
     You should have received a copy of the GNU General Public License
     along with 'Dual-N-Back Game'.  If not, see <http://www.gnu.org/licenses/>.
 */
+
+/* Material Design 3 Purple Color Tokens */
+:root {
+    --md-sys-color-primary: #6750A4;
+    --md-sys-color-primary-container: #EADDFF;
+    --md-sys-color-on-primary: #FFFFFF;
+    --md-sys-color-on-primary-container: #21005D;
+    --md-sys-color-secondary: #625B71;
+    --md-sys-color-secondary-container: #E8DEF8;
+    --md-sys-color-on-secondary: #FFFFFF;
+    --md-sys-color-on-secondary-container: #1D192B;
+    --md-sys-color-tertiary: #7D5260;
+    --md-sys-color-tertiary-container: #FFD8E4;
+    --md-sys-color-surface: #FEF7FF;
+    --md-sys-color-surface-variant: #E7E0EC;
+    --md-sys-color-outline: #79747E;
+    --md-sys-color-outline-variant: #CAC4D0;
+}
 
 * {
     box-sizing: border-box;
 }
 
 .screen {
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    overflow:hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: var(--md-sys-color-surface);
 }
 
 .box {
     width: 99;
     height: 99;
-    fill: #99ccff;
+    fill: var(--md-sys-color-primary-container);
     transform: translate3d(0,0,0);
     -webkit-transform: translate3d(0,0,0);
     -webkit-backface-visibility: hidden; /* Chrome, Safari, Opera */
     backface-visibility: hidden;
-    -webkit-animation: fade 3s linear 1;
-    animation: fade 3s linear 1;
+    -webkit-animation: fade 3s cubic-bezier(0.2, 0.0, 0.0, 1.0) 1;
+    animation: fade 3s cubic-bezier(0.2, 0.0, 0.0, 1.0) 1;
     -webkit-animation-play-state: paused; /* Safari 4.0 - 8.0 */
     animation-play-state: paused;
+    border-radius: 12px; /* MD3 container shape */
 }
 
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes fade {
-   0% {fill: #99ccff;}
-   1% {fill: #3366cc;}
-   17% {fill: #3366cc;}
-   18% {fill: #99ccff;}
-   100% {fill: #99ccff;}
+   0% {fill: var(--md-sys-color-primary-container);}
+   1% {fill: var(--md-sys-color-primary);}
+   17% {fill: var(--md-sys-color-primary);}
+   18% {fill: var(--md-sys-color-primary-container);}
+   100% {fill: var(--md-sys-color-primary-container);}
 }
 
 @keyframes fade {
-   0% {fill: #99ccff;}
-   1% {fill: #3366cc;}
-   17% {fill: #3366cc;}
-   18% {fill: #99ccff;}
-   100% {fill: #99ccff;}
+   0% {fill: var(--md-sys-color-primary-container);}
+   1% {fill: var(--md-sys-color-primary);}
+   17% {fill: var(--md-sys-color-primary);}
+   18% {fill: var(--md-sys-color-primary-container);}
+   100% {fill: var(--md-sys-color-primary-container);}
 }
 
 .tappable {
     transform: translate3d(0,0,0);
     -webkit-transform: translate3d(0,0,0);
-    background-color: #99ccff;
+    background-color: var(--md-sys-color-secondary-container);
     -webkit-backface-visibility: hidden; /* Chrome, Safari, Opera */
     backface-visibility: hidden;
-    -webkit-animation: pulse 0.3s linear 1;
-    animation: pulse 0.3s linear 1;
+    -webkit-animation: pulse 0.3s cubic-bezier(0.2, 0.0, 0.0, 1.0) 1;
+    animation: pulse 0.3s cubic-bezier(0.2, 0.0, 0.0, 1.0) 1;
     -webkit-animation-play-state: paused; /* Safari 4.0 - 8.0 */
     animation-play-state: paused;
+    border-radius: 12px; /* MD3 container shape */
+    box-shadow: 0 1px 3px rgba(103, 80, 164, 0.12), 0 1px 2px rgba(103, 80, 164, 0.24);
 }
 
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes pulse {
-   0% {background-color: #99ccff;}
-   5% {background-color: #3366cc;}
-   95% {background-color: #3366cc;}
-   100% {background-color: #99ccff;}
+   0% {
+       background-color: var(--md-sys-color-secondary-container);
+       box-shadow: 0 1px 3px rgba(103, 80, 164, 0.12), 0 1px 2px rgba(103, 80, 164, 0.24);
+   }
+   5% {
+       background-color: var(--md-sys-color-primary);
+       box-shadow: 0 4px 8px rgba(103, 80, 164, 0.24), 0 2px 4px rgba(103, 80, 164, 0.32);
+   }
+   95% {
+       background-color: var(--md-sys-color-primary);
+       box-shadow: 0 4px 8px rgba(103, 80, 164, 0.24), 0 2px 4px rgba(103, 80, 164, 0.32);
+   }
+   100% {
+       background-color: var(--md-sys-color-secondary-container);
+       box-shadow: 0 1px 3px rgba(103, 80, 164, 0.12), 0 1px 2px rgba(103, 80, 164, 0.24);
+   }
 }
 
 @keyframes pulse {
-   0% {background-color: #99ccff;}
-   5% {background-color: #3366cc;}
-   95% {background-color: #3366cc;}
-   100% {background-color: #99ccff;}
+   0% {
+       background-color: var(--md-sys-color-secondary-container);
+       box-shadow: 0 1px 3px rgba(103, 80, 164, 0.12), 0 1px 2px rgba(103, 80, 164, 0.24);
+   }
+   5% {
+       background-color: var(--md-sys-color-primary);
+       box-shadow: 0 4px 8px rgba(103, 80, 164, 0.24), 0 2px 4px rgba(103, 80, 164, 0.32);
+   }
+   95% {
+       background-color: var(--md-sys-color-primary);
+       box-shadow: 0 4px 8px rgba(103, 80, 164, 0.24), 0 2px 4px rgba(103, 80, 164, 0.32);
+   }
+   100% {
+       background-color: var(--md-sys-color-secondary-container);
+       box-shadow: 0 1px 3px rgba(103, 80, 164, 0.12), 0 1px 2px rgba(103, 80, 164, 0.24);
+   }
 }
 
 td {
-    text-align:center;
+    text-align: center;
 }
 
 .square-button {
     width: 6vw; /* Adjust the size as per your requirement */
     height: 6vw; /* This ensures the square shape */
-    background-color: #007bff; /* Button-like blue background */
-    color: white; /* White text color */
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
     display: inline-flex;
     justify-content: center;
     vertical-align: middle;
     align-items: center;
-    font-weight: bold;
+    font-weight: 500; /* MD3 typography weight */
     font-size: 2em; /* Adjust based on your size preference */
-    border: none; /* Remove if you prefer the button to have a border */
-    cursor: pointer; /* Changes the cursor to signify it's clickable */
-    border-radius: 5px; /* Optional: for rounded corners */
-    user-select: none; /* Prevents the user from selecting the content */
+    font-family: 'Roboto', sans-serif; /* MD3 typography */
+    border: none;
+    cursor: pointer;
+    border-radius: 20px; /* MD3 large component shape */
+    user-select: none;
+    box-shadow: 0 1px 3px rgba(103, 80, 164, 0.12), 0 1px 2px rgba(103, 80, 164, 0.24);
+    transition: all 0.2s cubic-bezier(0.2, 0.0, 0.0, 1.0); /* MD3 easing */
+    position: relative;
+    overflow: hidden;
 }
 
-/* Additional styles for hover effect to make it more button-like */
+/* MD3 State layer effect */
+.square-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--md-sys-color-on-primary);
+    opacity: 0;
+    transition: opacity 0.2s cubic-bezier(0.2, 0.0, 0.0, 1.0);
+    pointer-events: none;
+}
+
+/* MD3 hover state */
 .square-button:hover {
-    background-color: #0056b3; /* Slightly darker shade on hover */
+    box-shadow: 0 4px 8px rgba(103, 80, 164, 0.24), 0 2px 4px rgba(103, 80, 164, 0.32);
+}
+
+.square-button:hover::before {
+    opacity: 0.08; /* MD3 hover state layer */
+}
+
+/* MD3 focus state */
+.square-button:focus {
+    outline: none;
+    box-shadow: 0 4px 8px rgba(103, 80, 164, 0.24), 0 2px 4px rgba(103, 80, 164, 0.32);
+}
+
+.square-button:focus::before {
+    opacity: 0.12; /* MD3 focus state layer */
+}
+
+/* MD3 pressed state */
+.square-button:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 4px rgba(103, 80, 164, 0.16), 0 1px 2px rgba(103, 80, 164, 0.24);
+}
+
+.square-button:active::before {
+    opacity: 0.12; /* MD3 pressed state layer */
 }
 
 .inline-box {
@@ -119,5 +204,28 @@ td {
     justify-content: center;
     vertical-align: middle;
     align-items: center;
-    border: none; /* Remove if you prefer the button to have a border */
+    border: none;
+    background-color: var(--md-sys-color-surface-variant);
+    border-radius: 12px; /* MD3 container shape */
+    border: 1px solid var(--md-sys-color-outline-variant);
+}
+
+/* MD3 Dark theme support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --md-sys-color-primary: #D0BCFF;
+        --md-sys-color-primary-container: #4F378B;
+        --md-sys-color-on-primary: #371E73;
+        --md-sys-color-on-primary-container: #EADDFF;
+        --md-sys-color-secondary: #CCC2DC;
+        --md-sys-color-secondary-container: #4A4458;
+        --md-sys-color-on-secondary: #332D41;
+        --md-sys-color-on-secondary-container: #E8DEF8;
+        --md-sys-color-tertiary: #EFB8C8;
+        --md-sys-color-tertiary-container: #633B48;
+        --md-sys-color-surface: #10081D;
+        --md-sys-color-surface-variant: #49454F;
+        --md-sys-color-outline: #938F99;
+        --md-sys-color-outline-variant: #49454F;
+    }
 }
